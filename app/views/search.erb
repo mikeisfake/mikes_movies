@@ -1,0 +1,18 @@
+<section class="sform">
+  <form action="/movies/search" method="get">
+  <input type="text" name="search" placeholder="enter a movie title">
+  <input type="submit" value="search">
+</form>
+
+<div>
+  <form action="/movies/show" method="post">
+    <%@movie_list.each do |movie|%>
+      <input type="radio" name="<%=movie['imdbID']%>"> <%=movie['Title']%> (<%=movie['Year']%>)</input><br>
+    <%end%>
+    <br>
+    <%if !@movie_list.empty?%>
+      <input type="submit" value="review movie">
+    <%end%>
+  </form>
+</div>
+</section>

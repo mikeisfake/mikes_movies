@@ -1,0 +1,19 @@
+<section class="create-review-container">
+
+  <div class="create-review">
+    <img src="<%=@movie.poster%>" alt="movie poster">
+    <h1><%=@movie.title%></h1><br>
+    <h2>your thoughts:</h2><br>
+    <p><%=@movie.review%></p>
+    <div class="action-buttons">
+      <form action="/movies/<%=@movie.id%>" method="post">
+       <input type="hidden" name="_method" value="PATCH">
+
+       <textarea name="review" value="<%=@movie.review%>"></textarea>
+
+       <input type="submit" value="submit changes">
+      </form>
+    </div>
+  </div>
+
+</section>

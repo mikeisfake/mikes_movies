@@ -1,0 +1,19 @@
+<section class="create-review-container">
+
+  <div class="create-review">
+    <img src="<%=@movie.poster%>" alt="movie poster">
+    <h1><%=@movie.title%> (<%=@movie.release_date%>)</h1><br>
+    <p>dir. <%=@movie.director%></p><br><br>
+    <h2>your thoughts:</h2><br>
+    <p class="review"><%=@movie.review%></p><br>
+    <div class="action-buttons">
+      <a href="/home">Home</a>
+      <a href="/movies/<%=@movie.id%>/edit">Edit Review</a>
+      <form method="post" action="/movies/<%= @movie.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="delete review">
+      </form>
+    </div>
+  </div>
+
+</section>
