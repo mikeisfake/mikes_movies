@@ -1,6 +1,8 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
+  use Rack::Flash
 
   configure do
     set :public_folder, 'public'
@@ -27,7 +29,9 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
 			redirect '/home'
 		else
-			redirect "/failure"
+      flash[:message] = "This username is already taken"
+      erb :signup
+			#redirect "/failure"
 		end
   end
 

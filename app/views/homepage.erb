@@ -1,21 +1,19 @@
 <section class="homepage">
 
-<h1>Welcome <%=current_user.username%></h1>
-<a href="/movies/search">Search for movies</a>
+  <h1>Welcome <%=current_user.username%></h1>
+  <div class="action-buttons">
+    <a href="/movies/search">Search for movies</a>
+    <a href="/logout">logout</a>
+  </div>
 
 
-<div class="movies-container">
-<%@movies.reverse.each do |movie|%>
-<div class="movie-card">
-  <img src="<%=movie.poster%>" alt="movie poster">
-    <a href="/movies/<%=movie.id%>"><%=movie.title%>(<%=movie.release_date%>)</a>
-    dir. <%=movie.director%><br><br>
-    <p class="review"><%=movie.review%></p>
+<%if !current_user.movies.empty?%>
+  <div class="movies-container">
+  <%@movies.reverse.each do |movie|%>
+  <a href="/movies/<%=movie.id%>" class="movie-card"><img src="<%=movie.poster%>" alt="movie poster"></a>
+  <%end%>
   </div>
 <%end%>
-</div>
 
 <br>
-
- <a href="/logout">logout</a>
 </section>

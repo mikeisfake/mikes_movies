@@ -4,11 +4,14 @@
   <input type="submit" value="search">
 </form>
 
-<div>
+<div class="sresults">
   <form action="/movies/show" method="post">
+
     <%@movie_list.each do |movie|%>
-      <input type="radio" name="<%=movie['imdbID']%>"> <%=movie['Title']%> (<%=movie['Year']%>)</input><br>
+        <input type="radio" name="<%=movie['imdbID']%>" id="<%=movie['imdbID']%>">
+        <label for="<%=movie['imdbID']%>"><%=movie['Title']%> (<%=movie['Year']%>)</label><br>
     <%end%>
+
     <br>
     <%if !@movie_list.empty?%>
       <input type="submit" value="review movie">

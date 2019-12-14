@@ -21,15 +21,19 @@ class MoviesController < ApplicationController
 
   post '/movies/show' do
     if logged_in?
-      movie_id = params.keys[0]
-      movie_hash = HTTParty.get('http://www.omdbapi.com/?i='+movie_id+'&apikey=2cedcff3&').compact
-      title = movie_hash['Title']
-      release_date = movie_hash['Year']
-      director = movie_hash['Director']
-      summary = movie_hash['Plot']
-      poster = movie_hash['Poster']
-      @movie = Movie.create(title: title, release_date: release_date, director: director, summary: summary, poster: poster)
-      erb :show
+      if !params.empty?
+        movie_id = params.keys[0]
+        movie_hash = HTTParty.get('http://www.omdbapi.com/?i='+movie_id+'&apikey=2cedcff3&').compact
+        title = movie_hash['Title']
+        release_date = movie_hash['Year']
+        director = movie_hash['Director']
+        summary = movie_hash['Plot']
+        poster = movie_hash['Poster']
+        @movie = Movie.create(title: title, release_date: release_date, director: director, summary: summary, poster: poster)
+        erb :show
+      else
+        redirect '/movies/search'
+      end
     else
       redirect '/'
     end
@@ -56,7 +60,7 @@ class MoviesController < ApplicationController
   patch '/movies/:id' do
     @movie = Movie.find(params[:id])
 
-    if current_user == @movie.user_id
+    if current_user.id == @movie.user_id
       @movie.review = (params[:review])
       @movie.save
 

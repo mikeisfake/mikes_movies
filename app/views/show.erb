@@ -5,7 +5,7 @@
     (<%=@movie.release_date%>)
     <br>
     dir. <%=@movie.director%><br><br>
-    <p><%=@movie.summary%></p><br>
+    <p class="review"><%=@movie.summary%></p><br>
     <form action="/home" method="post">
       <input type="hidden" name="movie_id" value="<%=@movie.id%>">
       <textarea name="review" placeholder="write something witty"></textarea><br>

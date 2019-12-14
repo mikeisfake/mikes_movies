@@ -79,6 +79,10 @@ a:hover {
   align-items: center;
 }
 
+.sbutton {
+  margin: 30px 0;
+}
+
 .movies-container {
   width: 90vw;
   display: flex;
@@ -86,7 +90,6 @@ a:hover {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background: #111;
   padding: 25px;
   border-radius: 5px;
   margin-top: 25px;
@@ -98,8 +101,11 @@ a:hover {
   background: #000;
   margin: 7px;
   border-radius: 5px;
-  height: 500px;
-  overflow: auto;
+  border: 1px solid transparent;
+}
+
+.movie-card:hover {
+  border: 1px solid lightblue
 }
 
 .movie-card img {
@@ -109,7 +115,13 @@ a:hover {
 
 .review {
   text-transform: none;
-  font-size: .8em;
+  max-height: 500px;
+  overflow: auto;
+  max-width: 80vw;
+  padding: 10px;
+  background: #111;
+  border-radius: 5px;
+  line-height: 2;
 }
 
 .sform {
@@ -131,6 +143,33 @@ a:hover {
   text-transform: lowercase;
 }
 
+.sresults {
+  margin-top: 20px;
+}
+
+.sresults label {
+  width: 100%;
+  display: block;
+  background: #111;
+  padding: 20px;
+  margin: -5px 0;
+  border: 1px solid transparent
+}
+
+.sresults label:hover {
+  background: #000;
+}
+
+.sresults input[type="radio"] {
+  display: none;
+}
+
+.sresults input[type="radio"]:checked+label {
+  border: 1px solid #fff
+}
+
+
+
 .create-review-container {
   height: 100vh;
   display: flex;
@@ -140,12 +179,14 @@ a:hover {
 }
 
 .create-review{
-  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 5px;
 }
 
 .create-review img {
-  width: 100%;
+  width: 350px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -157,7 +198,8 @@ a:hover {
   color: #fff;
   resize: none;
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
+  line-height: 2;
 }
 
 .create-review input[type="submit"] {
@@ -185,4 +227,12 @@ a:hover {
   margin-top: 20px;
   align-items: center;
   justify-content: space-around;
+}
+
+.action-buttons a {
+  text-transform: lowercase;
+  padding: 10px;
+  margin: 0 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
 }
