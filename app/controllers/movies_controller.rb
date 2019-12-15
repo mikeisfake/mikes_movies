@@ -1,6 +1,5 @@
 require 'HTTParty'
 require 'byebug'
-require 'rack-flash'
 
 class MoviesController < ApplicationController
 
@@ -18,7 +17,6 @@ class MoviesController < ApplicationController
       end
         erb :search
       else
-        flash[:message] = "you do not have authority to do that."
         redirect '/'
     end
   end
@@ -46,7 +44,11 @@ class MoviesController < ApplicationController
   get '/movies/:id' do
     if logged_in?
       @movie = Movie.find(params[:id])
-      erb :display
+        if  owns_movie?
+          erb :display
+        else
+          redirect '/home'
+        end
     else
       redirect '/'
     end
@@ -55,7 +57,11 @@ class MoviesController < ApplicationController
   get '/movies/:id/edit' do
     if logged_in?
       @movie = Movie.find(params[:id])
-      erb :edit
+      if  owns_movie?
+        erb :edit
+      else
+        redirect '/home'
+      end
     else
       redirect '/'
     end
@@ -63,11 +69,8 @@ class MoviesController < ApplicationController
 
   patch '/movies/:id' do
     @movie = Movie.find(params[:id])
-
     if owns_movie?
-      @movie.review = (params[:review]).gsub("\n", "<br>")
-      @movie.save
-
+      @movie.update(review: params[:review])
       redirect '/home'
     else
       redirect '/'
@@ -75,14 +78,13 @@ class MoviesController < ApplicationController
   end
 
   delete '/movies/:id' do
+    @movie = Movie.find_by_id(params[:id])
     if owns_movie?
-      Movie.destroy(params[:id])
+      @movie.destroy
       redirect '/home'
     else
-      flash[:message] = "you do not have authority to do that."
-      erb :edit
+      redirect '/home'
     end
   end
-
 
 end

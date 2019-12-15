@@ -1,20 +1,29 @@
 <section class="create-review-container">
   <div class="create-review">
-    <div class="c-content">
+    <div class="c-content c-content-left">
       <img src="<%=@movie.poster%>" alt="movie poster"><br>
       <h2><%=@movie.title%> (<%=@movie.release_date%>)</h2>
       <br>
       dir. <%=@movie.director%><br>
+      <p class="sreview"><%=@movie.summary%></p>
     </div>
 
+  <div class="action-buttons">
     <div class="c-content">
-      <p class="sreview"><%=@movie.summary%></p><br>
+      <h2>write a review.</h2><br>
       <form action="/home" method="post">
         <input type="hidden" name="movie_id" value="<%=@movie.id%>">
-        <textarea name="review" placeholder="write something witty"></textarea><br>
-        <input type="submit" value="submit review">
+        <textarea name="review" placeholder="something witty here."></textarea><br>
+
+        <div class="action-buttons">
+          <a href="/home"><i class="fas fa-home"></i></a>
+          <button type="submit" value="submit">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
       </form>
+      </div>
     </div>
-    
+
   </div>
 </section>

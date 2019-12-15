@@ -6,8 +6,8 @@ body {
   background: #000;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
 h1 {
@@ -16,6 +16,10 @@ h1 {
 
 h2 {
   font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.2em;
 }
 
 a {
@@ -27,8 +31,10 @@ a:visited {
 }
 
 input:focus,
-textarea:focus {
-  outline: 1px solid var(--accent);
+textarea:focus,
+button:focus{
+  outline: 0px solid transparent;
+  box-shadow: 0 0 0 1px var(--accent);
 }
 
 /* Welcome Page Styles */
@@ -52,7 +58,7 @@ textarea:focus {
 
 .welcome a {
   padding: 10px;
-  background: #222;
+  background: #111;
   margin: 0 9px;
   border-radius: 5px;
   text-transform: lowercase;
@@ -74,7 +80,6 @@ textarea:focus {
 
 .signinup input {
   color: #fff;
-  background: #222;
   padding: 10px;
   margin: 10px 5px;
   letter-spacing: 1px;
@@ -84,14 +89,9 @@ textarea:focus {
   border: 1px solid transparent;
 }
 
-.signinup input:focus {
-  outline: 1px solid var(--accent);
-}
-
 /* Homepage Styles */
 
 .homepage {
-  height: 100vh;
   margin-top: 100px;
   margin-bottom: 100px;
   display: flex;
@@ -105,17 +105,102 @@ textarea:focus {
 }
 
 .movies-container {
-  max-width: 90vw;
+  width: 860px;
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 25px;
+  padding: 25px 0;
   border-radius: 5px;
   margin-top: 25px;
 }
+
+.movies-container h2,
+.movies-container p {
+  align-self: flex-start;
+  width: 100%;
+  display: block;
+  padding: 0 10px;
+  text-align: left;
+}
+
+.movies-container p a {
+  padding: 10px;
+  background: #111;
+  border-radius: 5px;
+}
+
+.movies-container p a:hover {
+  background: var(--accent)
+}
+
+.all-container {
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 25px;
+}
+
+.all-container h2 {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.all-home {
+  position: fixed;
+  top: -10px;
+  left: -20px;
+}
+
+.review-container {
+  width: 860px;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+}
+
+.review-card {
+  width: 840px;
+  max-height: 125px;
+  overflow: auto;
+  margin: 3px 0;
+  background: #111;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.review-container h2 {
+  width: 100%;
+}
+
+.review-card:hover {
+  border: 1px solid var(--accent);
+}
+
+.review-card img {
+  max-height: 125px;
+  float: left;
+  margin-right: 30px;
+}
+
+.review-card span {
+  display: block;
+  margin-left: 20px;
+}
+
 
 .movie-card {
   width: 150px;
@@ -134,24 +219,36 @@ textarea:focus {
   border-radius: 5px;
 }
 
+.review-card {
+  display: inline;
+  height: 220px;
+  color: #fff;
+}
+
+.review-card img {
+  height: 220px;
+  border-radius: 5px;
+}
 .review {
   text-transform: none;
-  max-height: 400px;
+  width: 400px;
+  height: 340px;
   overflow: auto;
-  max-width: 80vw;
   padding: 10px;
   font-size: 1.2em;
-  background: #111;
   padding: 10px;
   border-radius: 5px;
 }
 
 .sform {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.spage {
+  height: 100vh;
 }
 
 .sform input,
@@ -160,7 +257,7 @@ textarea:focus {
   padding: 9px;
   margin: 10px 5px;
   letter-spacing: 1px;
-  background: #222;
+  background: #111;
   border: 0px solid transparent;
   border-radius: 5px;
   text-transform: lowercase;
@@ -169,19 +266,33 @@ textarea:focus {
 
 .sresults {
   margin-top: 20px;
+  width: 850px;
+  display: flex;
+}
+
+.sresults img {
+  width: 150px;
+  padding: 3px;
+  margin-bottom: -5px;
 }
 
 .sresults label {
-  width: 100%;
   display: block;
   background: #111;
-  padding: 20px;
-  margin: -5px 0;
+  margin: 5px;
   border: 1px solid transparent;
   border-radius: 5px;
 }
 
 .sresults label:hover {
+  border: 1px solid var(--accent);
+}
+
+.sresults input[type="radio"]:checked+label {
+  background: var(--accent);
+}
+
+.sresults input:hover {
   background: var(--accent);
 }
 
@@ -189,11 +300,19 @@ textarea:focus {
   display: none;
 }
 
-.sresults input[type="radio"]:checked+label {
-  border: 1px solid var(--accent);
+.result-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 950px;
+  flex-wrap: wrap;
 }
 
-
+.result-cards img {
+  width: 150px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
 
 .create-review-container {
   height: 100vh;
@@ -212,8 +331,20 @@ textarea:focus {
 }
 
 .c-content {
+  display: flex;
+  flex-direction: column;
   margin: 0 30px;
+  max-width: 400px;
 }
+
+.c-content-left {
+  text-align: right;
+}
+
+.c-content img {
+  align-self: flex-end;
+}
+
 
 .sreview {
   width: 350px;
@@ -229,7 +360,7 @@ textarea:focus {
  .action-buttons textarea {
   width: 400px;
   height: 400px;
-  background-color: #222;
+  background-color: #111;
   color: #fff;
   resize: none;
   border-radius: 5px;
@@ -242,7 +373,7 @@ textarea:focus {
 .create-review input[type="submit"] {
   color: #fff;
   padding: 10px;
-  background: #222;
+  background: #111;
   margin: 9px 0;
   border-radius: 5px;
   border: 0px solid transparent;
@@ -252,7 +383,7 @@ textarea:focus {
 .create-review a {
   color: #fff;
   padding: 10px;
-  background: #222;
+  background: #111;
   margin: 9px 0;
   border-radius: 5px;
 }
@@ -265,16 +396,41 @@ textarea:focus {
   justify-content: flex-end;
 }
 
+.action-buttons textarea {
+  height: 340px;
+  background: #111;
+  margin-bottom: 10px;
+}
+
+[type="date"] {
+  height: 35px;
+  margin: 0 auto;
+  width: 100%;
+  font-family: arial, sans-serif;
+  font-size: 18px;
+  outline: none;
+  border: 0;
+  border-radius: 3px;
+  padding: 0 3px;
+  color: #fff;
+}
+
 .action-buttons a,
 .action-buttons button {
   padding: 10px;
-  background: #222;
+  background: #111;
   color: #fff
   margin: 0 10px;
-  margin-right: 20px;
+  margin-left: 20px;
   border-radius: 5px;
   border: 0px solid transparent;
   text-transform: lowercase;
+}
+
+.edit-buttons {
+  margin-top: -45px;
+  width: 50px;
+  align-self: flex-end;
 }
 
 .action-buttons a:hover,
@@ -296,6 +452,7 @@ textarea:focus {
   font-size: .8em
 }
 
-.h-page-buttons a {
-  margin: 0 10px;
+.h-page-buttons button{
+  margin-left: -5px;
+  padding: 8px;
 }

@@ -2,27 +2,32 @@
 
   <div class="create-review">
     <div class="c-content">
-    <img src="<%=@movie.poster%>" alt="movie poster">
-    <h2><%=@movie.title%> (<%=@movie.release_date%>)</h2>
-  </div>
-
-  <div class="c-content">
-    <div class="action-buttons">
-      <form action="/movies/<%=@movie.id%>" method="post">
-       <input type="hidden" name="_method" value="PATCH">
-
-       <textarea name="review"><%=@movie.review.gsub("<br>", "")%></textarea>
-        <br>
-        <div class="action-buttons">
-       <button type="submit" value="submit"><i class="fas fa-arrow-right"></i></button>
-       <a href="/home"><i class="fas fa-home"></i></a>
-       <form class="delete-button" method="post" action="/movies/<%= @movie.id %>">
-         <input type="hidden" name="_method" value="delete">
-         <button type="delete" value="delete review"><i class="fas fa-trash"></i></button>
-       </form>
-       </div>
-      </form>
+      <img src="<%=@movie.poster%>" alt="movie poster">
     </div>
+
+    <div class="c-content">
+       <h3>edit your review of:</h3><h2><%=@movie.title%>
+        (<%=@movie.release_date%>)</h2>
+      <div class="action-buttons">
+        <form action="/movies/<%=@movie.id%>" method="post">
+          <input type="hidden" name="_method" value="PATCH">
+          <textarea name="review"><%=@movie.review.gsub("<br>", "")%></textarea>
+            <button type="submit" value="submit">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+      </div>
+      <div class="action-buttons edit-buttons">
+        <a href="/home">
+          <i class="fas fa-home"></i>
+        </a>
+        <form class="delete-button" method="post" action="/movies/<%= @movie.id %>">
+          <input type="hidden" name="_method" value="delete">
+          <button type="delete" value="delete review">
+            <i class="fas fa-trash"></i>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 

@@ -2,16 +2,15 @@
 
   <div class="create-review">
 
-    <div class="c-content">
+    <div class="c-content c-content-left">
     <img src="<%=@movie.poster%>" alt="movie poster">
     <h2><%=@movie.title%> (<%=@movie.release_date%>)</h2>
     <p>dir. <%=@movie.director%></p>
     </div>
 
     <div class="c-content">
+      <h2>your thoughts:</h2><br>
       <div class="review">
-      <h2>your thoughts:</h2>
-      <br>
       <%=@movie.review%></div><br>
       <div class="action-buttons">
         <a href="/home"><i class="fas fa-home"></i></a>

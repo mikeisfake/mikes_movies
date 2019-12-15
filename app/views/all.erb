@@ -1,0 +1,13 @@
+<div class="action-buttons all-home">
+  <a href="/home">
+    <i class="fas fa-home"></i>
+  </a>
+</div>
+
+<div class="all-container">
+  <h2>all films you've watched.</h2>
+
+  <%@movies.reverse.each do |movie|%>
+    <a href="/movies/<%=movie.id%>" class="movie-card"><img src="<%=movie.poster%>" alt="movie poster"></a>
+  <%end%>
+</div>

@@ -24,4 +24,11 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/all' do
+    if logged_in?
+      @movies = current_user.movies
+      erb :all 
+    end
+  end
+
 end
