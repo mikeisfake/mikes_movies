@@ -1,6 +1,9 @@
 <div class="welcome">
 
-  <h1>Mikes Movie Collector</h1>
+  <h1 class="animated fadeInDown"> m_movies.</h1>
+  <% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <% end %>
   <ul>
     <li><a href="/signup">Signup</a></li>
     <li><a href="/login">Login</a></li>

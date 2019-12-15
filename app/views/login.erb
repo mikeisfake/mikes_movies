@@ -1,15 +1,15 @@
 <section class="signinup">
 
-  <h1>Login</h1>
+  <h1>login.</h1>
 
   <form action="/login" method="POST">
-
     <input type="text" name="username" placeholder="Username">
-
     <input type="password" name="password" placeholder="Password">
-
     <input type="submit" value="Login">
-
   </form>
+  <br>
+  <% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <% end %>
 
 </section>

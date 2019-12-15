@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   post '/home' do
     if logged_in?
       @movie = Movie.find_by_id(params[:movie_id])
-      @movie.review = params[:review]
+      @movie.review = params[:review].gsub("\n", "<br>")
       @movie.user_id = session[:user_id]
       current_user.movies << @movie
       @movies = current_user.movies

@@ -1,7 +1,10 @@
 require 'HTTParty'
-require 'pry'
+require 'byebug'
+require 'rack-flash'
 
 class MoviesController < ApplicationController
+
+
 
   get '/movies/search' do
     if logged_in?
@@ -15,14 +18,15 @@ class MoviesController < ApplicationController
       end
         erb :search
       else
-      redirect '/'
+        flash[:message] = "you do not have authority to do that."
+        redirect '/'
     end
   end
 
   post '/movies/show' do
     if logged_in?
       if !params.empty?
-        movie_id = params.keys[0]
+        movie_id = params[:imdbID].keys[0]
         movie_hash = HTTParty.get('http://www.omdbapi.com/?i='+movie_id+'&apikey=2cedcff3&').compact
         title = movie_hash['Title']
         release_date = movie_hash['Year']
@@ -32,7 +36,7 @@ class MoviesController < ApplicationController
         @movie = Movie.create(title: title, release_date: release_date, director: director, summary: summary, poster: poster)
         erb :show
       else
-        redirect '/movies/search'
+        redirect '/home'
       end
     else
       redirect '/'
@@ -60,8 +64,8 @@ class MoviesController < ApplicationController
   patch '/movies/:id' do
     @movie = Movie.find(params[:id])
 
-    if current_user.id == @movie.user_id
-      @movie.review = (params[:review])
+    if owns_movie?
+      @movie.review = (params[:review]).gsub("\n", "<br>")
       @movie.save
 
       redirect '/home'
@@ -71,8 +75,13 @@ class MoviesController < ApplicationController
   end
 
   delete '/movies/:id' do
-    Movie.destroy(params[:id])
-    redirect('/home')
+    if owns_movie?
+      Movie.destroy(params[:id])
+      redirect '/home'
+    else
+      flash[:message] = "you do not have authority to do that."
+      erb :edit
+    end
   end
 
 

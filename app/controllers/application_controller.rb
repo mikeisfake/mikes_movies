@@ -12,7 +12,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :index
+    if logged_in?
+      redirect '/home'
+    else
+      erb :index
+    end
   end
 
   get '/signup' do
@@ -29,9 +33,8 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
 			redirect '/home'
 		else
-      flash[:message] = "This username is already taken"
+      flash[:message] = "something you entered is invalid."
       erb :signup
-			#redirect "/failure"
 		end
   end
 
@@ -50,7 +53,8 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
       redirect '/home'
     else
-      redirect '/failure'
+      flash[:message] = "these credentials are invalid. try something else maybe?"
+      erb :login
     end
   end
 
@@ -71,6 +75,10 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       User.find_by_id(session[:user_id])
+    end
+
+    def owns_movie?
+      current_user.id == @movie.user_id
     end
 
   end
