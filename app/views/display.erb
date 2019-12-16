@@ -2,14 +2,15 @@
 
   <div class="create-review">
 
-    <div class="c-content c-content-left">
+    <div class="c-content c-content-left animated fadeInDown">
     <img src="<%=@movie.poster%>" alt="movie poster">
     <h2><%=@movie.title%> (<%=@movie.release_date%>)</h2>
-    <p>dir. <%=@movie.director%></p>
+    <p>dir. <%=@movie.director%></p><br>
+    <p><%=@movie.summary%></p>
     </div>
 
-    <div class="c-content">
-      <h2>your thoughts:</h2><br>
+    <div class="c-content animated fadeInUp">
+      <h2>your review:</h2><br>
       <div class="review">
       <%=@movie.review%></div><br>
       <div class="action-buttons">

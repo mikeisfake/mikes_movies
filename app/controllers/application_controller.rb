@@ -81,6 +81,10 @@ class ApplicationController < Sinatra::Base
       current_user.id == @movie.user_id
     end
 
+    def favorite?
+      !!@movie.favorite
+    end
+
   end
 
 end

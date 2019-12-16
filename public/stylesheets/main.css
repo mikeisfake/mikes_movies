@@ -1,5 +1,11 @@
 :root {
   --accent: #1abd;
+  --menu: #111;
+  --shadow: 0 0 5px 1px
+}
+
+* {
+  transition: .3s ease;
 }
 
 body {
@@ -12,6 +18,7 @@ body {
 
 h1 {
   font-size: 2em;
+  text-align: center;
 }
 
 h2 {
@@ -58,7 +65,7 @@ button:focus{
 
 .welcome a {
   padding: 10px;
-  background: #111;
+  background: var(--menu);
   margin: 0 9px;
   border-radius: 5px;
   text-transform: lowercase;
@@ -83,7 +90,7 @@ button:focus{
   padding: 10px;
   margin: 10px 5px;
   letter-spacing: 1px;
-  background: #111;
+  background: var(--menu);
   border-radius: 5px;
   text-transform: lowercase;
   border: 1px solid transparent;
@@ -128,8 +135,10 @@ button:focus{
 
 .movies-container p a {
   padding: 10px;
-  background: #111;
+  background: var(--menu);
   border-radius: 5px;
+  margin-top: 10px;
+
 }
 
 .movies-container p a:hover {
@@ -157,48 +166,8 @@ button:focus{
 
 .all-home {
   position: fixed;
-  top: -10px;
-  left: -20px;
-}
-
-.review-container {
-  width: 860px;
-  overflow: auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items:center;
-  justify-content: center;
-}
-
-.review-card {
-  width: 840px;
-  max-height: 125px;
-  overflow: auto;
-  margin: 3px 0;
-  background: #111;
-  padding: 5px;
-  border: 1px solid transparent;
-  border-radius: 5px;
-}
-
-.review-container h2 {
-  width: 100%;
-}
-
-.review-card:hover {
-  border: 1px solid var(--accent);
-}
-
-.review-card img {
-  max-height: 125px;
-  float: left;
-  margin-right: 30px;
-}
-
-.review-card span {
-  display: block;
-  margin-left: 20px;
+  top: 20px;
+  left: 20px;
 }
 
 
@@ -210,7 +179,7 @@ button:focus{
 }
 
 .movie-card:hover {
-  border: 1px solid var(--accent);
+  transform: scale(1.1);
 }
 
 .movie-card img {
@@ -219,24 +188,68 @@ button:focus{
   border-radius: 5px;
 }
 
+.review-container {
+  width: 882px;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items:center;
+  justify-content: center;
+}
+
+.review-container h2 {
+  width: 100%;
+  padding-left: 20px;
+}
+
 .review-card {
-  display: inline;
-  height: 220px;
+  width: 400px;
+  max-height: 150px;
+  margin: 9px;
+  background: var(--menu);
   color: #fff;
+  border-radius: 5px;
+  white-space:normal;
+  text-overflow: ellipsis;
+}
+
+.review-card:hover {
+  transform: scale(1.05);
 }
 
 .review-card img {
-  height: 220px;
+  height: 150px;
+  float: left;
+  border-radius: 5px 0 0 5px;
+}
+
+.review-card span {
+  display: block;
+  height: 140px;
+  padding: 10px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  position: relative;
   border-radius: 5px;
 }
+
+.review-card span::before{
+    content:'';
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    height:100px;
+    background: linear-gradient(transparent, var(--menu));
+}
+
 .review {
   text-transform: none;
   width: 400px;
   height: 340px;
   overflow: auto;
-  padding: 10px;
   font-size: 1.2em;
-  padding: 10px;
   border-radius: 5px;
 }
 
@@ -257,7 +270,7 @@ button:focus{
   padding: 9px;
   margin: 10px 5px;
   letter-spacing: 1px;
-  background: #111;
+  background: var(--menu);
   border: 0px solid transparent;
   border-radius: 5px;
   text-transform: lowercase;
@@ -266,30 +279,27 @@ button:focus{
 
 .sresults {
   margin-top: 20px;
-  width: 850px;
-  display: flex;
 }
 
-.sresults img {
-  width: 150px;
-  padding: 3px;
-  margin-bottom: -5px;
+.sresults label img {
+  margin-bottom: -7px;
 }
 
 .sresults label {
   display: block;
-  background: #111;
-  margin: 5px;
   border: 1px solid transparent;
   border-radius: 5px;
+  padding: 3px;
+  margin: 3px;
+  transition: .3s ease;
 }
 
 .sresults label:hover {
-  border: 1px solid var(--accent);
+  transform: scale(1.1);
 }
 
 .sresults input[type="radio"]:checked+label {
-  background: var(--accent);
+  border: 1px solid var(--accent);
 }
 
 .sresults input:hover {
@@ -300,16 +310,25 @@ button:focus{
   display: none;
 }
 
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .result-cards {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 950px;
+  width: 850px;
   flex-wrap: wrap;
 }
 
 .result-cards img {
   width: 150px;
+  height: 220px;
   border: 1px solid transparent;
   border-radius: 5px;
 }
@@ -359,8 +378,8 @@ button:focus{
  .create-review textarea,
  .action-buttons textarea {
   width: 400px;
-  height: 400px;
-  background-color: #111;
+  height: 200px;
+  background-color: var(--menu);
   color: #fff;
   resize: none;
   border-radius: 5px;
@@ -373,7 +392,7 @@ button:focus{
 .create-review input[type="submit"] {
   color: #fff;
   padding: 10px;
-  background: #111;
+  background: var(--menu);
   margin: 9px 0;
   border-radius: 5px;
   border: 0px solid transparent;
@@ -383,54 +402,51 @@ button:focus{
 .create-review a {
   color: #fff;
   padding: 10px;
-  background: #111;
+  background: var(--menu);
   margin: 9px 0;
   border-radius: 5px;
 }
 
 .action-buttons {
   display: flex;
-  margin: 0 10px;
-  margin-top: 20px;
   align-items: center;
   justify-content: flex-end;
 }
 
 .action-buttons textarea {
-  height: 340px;
-  background: #111;
-  margin-bottom: 10px;
-}
-
-[type="date"] {
-  height: 35px;
-  margin: 0 auto;
-  width: 100%;
-  font-family: arial, sans-serif;
-  font-size: 18px;
-  outline: none;
-  border: 0;
-  border-radius: 3px;
-  padding: 0 3px;
-  color: #fff;
 }
 
 .action-buttons a,
-.action-buttons button {
+.action-buttons button,
+button.action-buttons{
   padding: 10px;
-  background: #111;
+  background: var(--menu);
   color: #fff
   margin: 0 10px;
-  margin-left: 20px;
+  margin-right: 8px;
   border-radius: 5px;
   border: 0px solid transparent;
   text-transform: lowercase;
 }
 
+button.action-buttons {
+  position:absolute;
+  left: 380px;
+  padding: 5px inherit;
+  margin-top: 5px;
+}
+
 .edit-buttons {
-  margin-top: -45px;
-  width: 50px;
-  align-self: flex-end;
+  display: flex;
+  margin-top: -5px;
+  margin-right: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.edit-buttons a {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .action-buttons a:hover,
@@ -438,12 +454,14 @@ button:focus{
   background: var(--accent);
 }
 
-.create-review button[type="delete"]:hover {
+button[type="delete"]:hover {
   background: #d1473d;
 }
 
 .fa-trash,
-.fa-arrow-right{
+.fa-arrow-right,
+.fa-home,
+.fa-search{
   color: #fff;
   padding: 2px;
 }
