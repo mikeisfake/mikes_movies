@@ -31,5 +31,16 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/all/search' do
+    if logged_in?
+      @title = params[:search]
+      allmovies = Movie.where("title LIKE ?", "%#{@title}%")
+      @movies = allmovies.map do |movie|
+        movie if movie.user_id == current_user.id
+      end.compact
+      erb :'all-search'
+    end
+  end
+
 
 end

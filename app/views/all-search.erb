@@ -4,6 +4,9 @@
     <a href="/home">
       <i class="fas fa-home"></i>
     </a>
+    <a href="/all">
+      <i class="fas fa-th-large"></i>
+    </a>
   </div>
 
   <div class="sform animated fadeInDown">
@@ -14,10 +17,8 @@
       </button>
     </form>
   </div>
-
-  <h2>all films <span class="color"><%=current_user.username%></span>  has logged.</h2>
-
-  <%@movies.reverse.each do |movie|%>
-    <a href="/movies/<%=movie.id%>" class="movie-card" name="<%=movie.title%> (<%=movie.release_date%>)"><img src="<%=movie.poster%>" alt="movie poster"></a>
-  <%end%>
+<h2>reviews with <span class="color"><%=@title%></span>.</h2>
+<%@movies.each do |movie|%>
+  <a href="/movies/<%=movie.id%>" class="movie-card"><img src="<%=movie.poster%>" alt="movie poster"></a>
+<%end%>
 </div>

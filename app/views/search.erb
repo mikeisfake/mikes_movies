@@ -10,8 +10,19 @@
   <button type="submit" value="search"><i class="fas fa-search"></i></button>
 </form>
 
+  <% if flash.has?(:message) %>
+  <span class="alert">
+  <%= flash[:message] %>
+  </span>
+  <% end %>
+
+<br>
+<%if !@movie_list.empty?%>
+<h2>search results for <span class="color"><%=@movie%></span>.</h2>
+<%end%>
+
 <div class="sresults animated fadeIn delay-1s">
-  <form action="/movies/show" method="post" class="result-cards">
+  <form action="/movies/create" method="post" class="result-cards">
   <div class="card-container">
     <%@movie_list.each_with_index do |movie,i|%>
       <input type="radio" name="imdbID[<%=movie['imdbID']%>]" id="movie<%=i%>">
@@ -24,9 +35,6 @@
 
     <%end%>
   </div>
-    <%if !@movie_list.empty?%>
-      <input class="action-buttons" type="submit" value="review movie">
-    <%end%>
   </form>
 </div>
 </section>

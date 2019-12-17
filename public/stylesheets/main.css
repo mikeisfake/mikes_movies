@@ -1,7 +1,17 @@
 :root {
-  --accent: #1abd;
+  --accent: #3fa5b0;
+  --alert: #d1473d;
   --menu: #111;
-  --shadow: 0 0 5px 1px
+  --text: #eee;
+  --background: #000;
+}
+
+.color {
+  color: var(--accent);
+}
+
+.alert {
+  color: var(--alert)
 }
 
 * {
@@ -9,8 +19,8 @@
 }
 
 body {
-  background: #000;
-  color: #fff;
+  background: var(--background);
+  color: var(--text);
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   line-height: 1.7;
@@ -31,10 +41,11 @@ h3 {
 
 a {
   text-decoration: none;
+  color: var(--text);
 }
 
 a:visited {
-  color: #fff;
+  color: var(--text);
 }
 
 input:focus,
@@ -56,7 +67,17 @@ button:focus{
 .welcome h1 {
   padding: 10px;
   margin-bottom: 20px;
+  margin-left: 10px;
   text-transform: lowercase;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 10s;
+  transition: 3s ease;
+}
+
+@keyframes typing {
+  from {width: 0}
+  to {width: 100%}
 }
 
 .welcome ul {
@@ -73,7 +94,7 @@ button:focus{
 
 .welcome a:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--text);
 }
 
 /* Signup & Login Page Styles */
@@ -85,15 +106,16 @@ button:focus{
   justify-content: center;
 }
 
-.signinup input {
-  color: #fff;
+.signinup input,
+.signinup button {
+  color: var(--text);
   padding: 10px;
   margin: 10px 5px;
   letter-spacing: 1px;
   background: var(--menu);
   border-radius: 5px;
   text-transform: lowercase;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
 }
 
 /* Homepage Styles */
@@ -153,8 +175,7 @@ button:focus{
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 5px;
-  margin-top: 25px;
+  padding-top: 100px;
 }
 
 .all-container h2 {
@@ -168,6 +189,7 @@ button:focus{
   position: fixed;
   top: 20px;
   left: 20px;
+  z-index: 99999;
 }
 
 
@@ -180,6 +202,30 @@ button:focus{
 
 .movie-card:hover {
   transform: scale(1.1);
+}
+
+a.movie-card::after{
+  content: attr(name);
+  z-index: 9999;
+  width: 150px;
+  height: 100%;
+  background: rgba(17, 17, 17, .6);
+  border-radius:5px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 0px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+a.movie-card:hover::after {
+  opacity: 1;
 }
 
 .movie-card img {
@@ -208,7 +254,7 @@ button:focus{
   max-height: 150px;
   margin: 9px;
   background: var(--menu);
-  color: #fff;
+  color: var(--text);
   border-radius: 5px;
   white-space:normal;
   text-overflow: ellipsis;
@@ -240,17 +286,17 @@ button:focus{
     bottom:0;
     left: 0;
     width: 100%;
-    height:100px;
-    background: linear-gradient(transparent, var(--menu));
+    height:140px;
+    background: linear-gradient(0deg, var(--menu) 0%, rgba(26,26,26,0) 100%);
 }
 
 .review {
   text-transform: none;
   width: 400px;
-  height: 340px;
+  max-height: 70vh;
   overflow: auto;
   font-size: 1.2em;
-  border-radius: 5px;
+  position: relative;
 }
 
 .sform {
@@ -266,7 +312,7 @@ button:focus{
 
 .sform input,
 .sform button{
-  color: #fff;
+  color: var(--text);
   padding: 9px;
   margin: 10px 5px;
   letter-spacing: 1px;
@@ -378,9 +424,9 @@ button:focus{
  .create-review textarea,
  .action-buttons textarea {
   width: 400px;
-  height: 200px;
+  height: 275px;
   background-color: var(--menu);
-  color: #fff;
+  color: var(--text);
   resize: none;
   border-radius: 5px;
   border: 0px solid transparent;
@@ -390,7 +436,7 @@ button:focus{
 }
 
 .create-review input[type="submit"] {
-  color: #fff;
+  color: var(--text);
   padding: 10px;
   background: var(--menu);
   margin: 9px 0;
@@ -400,7 +446,7 @@ button:focus{
 }
 
 .create-review a {
-  color: #fff;
+  color: var(--text);
   padding: 10px;
   background: var(--menu);
   margin: 9px 0;
@@ -413,16 +459,12 @@ button:focus{
   justify-content: flex-end;
 }
 
-.action-buttons textarea {
-}
-
 .action-buttons a,
 .action-buttons button,
 button.action-buttons{
   padding: 10px;
   background: var(--menu);
-  color: #fff
-  margin: 0 10px;
+  color: var(--text);
   margin-right: 8px;
   border-radius: 5px;
   border: 0px solid transparent;
@@ -455,19 +497,30 @@ button.action-buttons {
 }
 
 button[type="delete"]:hover {
-  background: #d1473d;
+  background: var(--alert);
 }
 
 .fa-trash,
 .fa-arrow-right,
 .fa-home,
-.fa-search{
-  color: #fff;
+.fa-search
+.fa-sign-out-alt,
+.fa-th-large{
+  color: var(--text);
   padding: 2px;
+}
+
+.fa-sign-out-alt{
+  font-size: 1.2em;
+  margin: 0 4px;
 }
 .fa-user {
   color: var(--accent);
   font-size: .8em
+}
+
+a.logout:hover {
+  background: var(--alert);
 }
 
 .h-page-buttons button{

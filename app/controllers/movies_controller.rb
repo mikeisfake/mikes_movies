@@ -7,12 +7,15 @@ class MoviesController < ApplicationController
 
   get '/movies/search' do
     if logged_in?
-      movie = params[:search]
+      @movie = params[:search]
       @movie_list = []
-      if movie
-        query = search_api(movie)
+      if @movie
+        query = search_api(@movie)
         if query['Error'] == nil
           @movie_list = query['Search'].compact
+        else
+          flash.now[:message] = "didn't find anything. try a different search."
+          erb :search
         end
       end
         erb :search
@@ -21,7 +24,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  post '/movies/show' do
+  post '/movies/create' do
     if logged_in?
       if !params.empty?
         movie_id = params[:imdbID].keys[0]
@@ -36,7 +39,7 @@ class MoviesController < ApplicationController
         summary = movie_hash['Plot']
         poster = movie_hash['Poster']
         @movie = Movie.create(title: title, release_date: release_date, director: director, summary: summary, poster: poster)
-        erb :show
+        erb :create
       else
         redirect '/home'
       end

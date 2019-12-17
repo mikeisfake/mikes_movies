@@ -7,7 +7,7 @@
 
     <div class="c-content animated fadeInUp">
 
-      <h3>edit your review of:</h3>
+      <h3 class="color">edit your review of:</h3>
       <h2><%=@movie.title%>
         (<%=@movie.release_date%>)</h2>
 
@@ -21,6 +21,9 @@
         <div class="action-buttons edit-buttons">
             <a href="/home">
               <i class="fas fa-home"></i>
+            </a>
+            <a href="/all">
+              <i class="fas fa-th-large"></i>
             </a>
             <form class="delete-button" method="post" action="/movies/<%= @movie.id %>">
               <input type="hidden" name="_method" value="delete">

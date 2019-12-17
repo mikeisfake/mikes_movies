@@ -1,3 +1,11 @@
+<div class="action-buttons all-home animated fadeIn">
+  <a href="/logout" class="logout"><i class="fas fa-sign-out-alt"></i>  logout.</a>
+
+  <a href="/all">
+    <i class="fas fa-th-large"></i>
+  </a>
+</div>
+
 <section class="homepage animated fadeInDown">
 
     <h1>
@@ -12,7 +20,9 @@
             <i class="fas fa-search"></i>
           </button>
         </form>
-        <a href="/logout">logout</a>
+        <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
       </div>
     </div>
 
@@ -21,20 +31,17 @@
     <div class="movies-container animated fadeIn delay-1s">
       <h2>recently watched.</h2>
       <%@movies.reverse.first(5).each do |movie|%>
-        <a href="/movies/<%=movie.id%>" class="movie-card"><img src="<%=movie.poster%>" alt="movie poster"></a>
+        <a href="/movies/<%=movie.id%>" class="movie-card" name="<%=movie.title%> (<%=movie.release_date%>)"><img src="<%=movie.poster%>" alt="movie poster"></a>
       <%end%>
-      <p>
-        <a href="/all">see all movies.</a>
-      </p>
     </div>
 
-    <ul class="review-container animated fadeIn delay-2s">
+    <ul class="review-container animated fadeIn slow delay-1s">
       <h2>random reviews.</h2>
       <%@movies.sample(6).each do |movie|%>
         <a href="/movies/<%=movie.id%>" class="review-card">
-          <li >
+          <li>
             <img src="<%=movie.poster%>" alt="">
-            <span><%=movie.review%></span>
+            <span><h3> <%=movie.title%></h3><%=movie.review%></span>
           </li>
         </a>
       <%end%>

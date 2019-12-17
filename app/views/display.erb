@@ -15,6 +15,9 @@
       <%=@movie.review%></div><br>
       <div class="action-buttons">
         <a href="/home"><i class="fas fa-home"></i></a>
+        <a href="/all">
+          <i class="fas fa-th-large"></i>
+        </a>
         <a href="/movies/<%=@movie.id%>/edit"><i class="far fa-edit"></i></a>
         <form class="delete-button" method="post" action="/movies/<%= @movie.id %>">
           <input type="hidden" name="_method" value="delete">
