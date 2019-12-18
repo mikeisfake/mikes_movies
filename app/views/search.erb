@@ -1,12 +1,8 @@
 <section class="homepage allpage">
 
-<div class="action-buttons all-home">
-  <a href="/home">
-    <i class="fas fa-home"></i>
-  </a>
-</div>
+<div class="main-nav">
 
-<section class="sform spage">
+<section class="sform home-button">
   <form action="/movies/search" method="get" class="animated fadeIn slow">
   <input type="text" name="search" placeholder="enter a movie title">
   <button type="submit" value="search"><i class="fas fa-search"></i></button>
@@ -18,10 +14,19 @@
   </span>
   <% end %>
 
-<br>
 <%if !@movie_list.empty?%>
 <h2>search results for <span class="color"><%=@movie%></span>.</h2>
 <%end%>
+</section>
+
+<div class="action-buttons">
+  <a href="/home">
+    <i class="fas fa-home"></i>
+  </a>
+</div>
+
+</div>
+
 
 <div class="sresults animated fadeIn delay-1s">
   <form action="/movies/create" method="post" class="result-cards">
@@ -43,6 +48,4 @@
   </div>
   </form>
 </div>
-</section>
-
 </section>

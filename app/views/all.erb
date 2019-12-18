@@ -1,21 +1,24 @@
-<section class="homepage allpage">
+<section class="homepage">
 
-  <div class="action-buttons all-home animated fadeIn">
-    <a href="/home">
-      <i class="fas fa-home"></i>
-    </a>
-  </div>
+  <div class="main-nav">
 
-  <div class="sform animated fadeInDown">
+  <div class="home-button sform animated fadeInDown">
     <form action="/all/search" method="get">
       <input type="text" name="search" placeholder="search for a review">
       <button type="submit" value="search">
         <i class="fas fa-search"></i>
       </button>
     </form>
+
+    <h2><span class="color"><%=current_user.username%></span> is on the grid.</h2>
   </div>
 
-  <h2><span class="color"><%=current_user.username%></span> is on the grid.</h2>
+  <div class="action-buttons animated fadeIn ">
+    <a href="/home">
+      <i class="fas fa-home"></i>
+    </a>
+  </div>
+  </div>
 
 <div class="all-container animated fadeIn">
 
