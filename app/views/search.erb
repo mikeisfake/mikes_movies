@@ -1,3 +1,5 @@
+<section class="homepage allpage">
+
 <div class="action-buttons all-home">
   <a href="/home">
     <i class="fas fa-home"></i>
@@ -11,7 +13,7 @@
 </form>
 
   <% if flash.has?(:message) %>
-  <span class="alert">
+  <span class="alert animated shake">
   <%= flash[:message] %>
   </span>
   <% end %>
@@ -28,13 +30,19 @@
       <input type="radio" name="imdbID[<%=movie['imdbID']%>]" id="movie<%=i%>">
 
       <%if movie['Poster'] != "N/A"%>
-        <label for="movie<%=i%>"><img src="<%=movie['Poster']%>" alt="<%=movie['Title']%> (<%=movie['Year']%>)"></label>
+        <label for="movie<%=i%>"><img src="<%=movie['Poster']%>" title="<%=movie['Title']%> (<%=movie['Year']%>)">
+        <span class="simage"><%=movie['Title']%> (<%=movie['Year']%>)</span>
+        </label>
       <%else%>
-        <label for="movie<%=i%>"><img src="https://cdn.bestmoviehd.net/share/images/no-cover.png" alt="" title="<%=movie['Title']%> (<%=movie['Year']%>)"></label>
+        <label for="movie<%=i%>">
+        <span class="no-image"><%=movie['Title']%> (<%=movie['Year']%>)</span>
+        </label>
       <%end%>
 
     <%end%>
   </div>
   </form>
 </div>
+</section>
+
 </section>

@@ -12,7 +12,9 @@
   </form>
   <br>
   <% if flash.has?(:message) %>
+  <span class="alert animated shake">
   <%= flash[:message] %>
+  </span>
   <% end %>
 
 </section>

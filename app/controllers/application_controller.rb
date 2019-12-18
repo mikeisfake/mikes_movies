@@ -33,7 +33,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
 			redirect '/home'
 		else
-      flash[:message] = "something you entered is invalid."
+      flash.now[:message] = "i'm sorry dave. i'm afraid i can't do that."
       erb :signup
 		end
   end
@@ -53,7 +53,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
       redirect '/home'
     else
-      flash[:message] = "these credentials are invalid. try something else maybe?"
+      flash.now[:message] = "you shall not pass!"
       erb :login
     end
   end

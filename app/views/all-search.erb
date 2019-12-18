@@ -1,4 +1,4 @@
-<div class="all-container animated fadeIn">
+<section class="homepage">
 
   <div class="action-buttons all-home animated fadeIn">
     <a href="/home">
@@ -18,7 +18,12 @@
     </form>
   </div>
 <h2>reviews with <span class="color"><%=@title%></span>.</h2>
+
+<div class="all-container animated fadeIn">
+
 <%@movies.each do |movie|%>
-  <a href="/movies/<%=movie.id%>" class="movie-card"><img src="<%=movie.poster%>" alt="movie poster"></a>
+  <a href="/movies/<%=movie.id%>" class="movie-card" name="<%=movie.title%> (<%=movie.release_date%>)"><img src="<%=movie.poster%>" alt="movie poster"></a>
 <%end%>
 </div>
+
+</section>

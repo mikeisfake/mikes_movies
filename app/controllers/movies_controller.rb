@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
         if query['Error'] == nil
           @movie_list = query['Search'].compact
         else
-          flash.now[:message] = "didn't find anything. try a different search."
+          flash.now[:message] = "didn't find anything. try searching for something else?"
           erb :search
         end
       end

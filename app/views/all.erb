@@ -1,4 +1,4 @@
-<div class="all-container animated fadeIn">
+<section class="homepage allpage">
 
   <div class="action-buttons all-home animated fadeIn">
     <a href="/home">
@@ -15,9 +15,13 @@
     </form>
   </div>
 
-  <h2>all films <span class="color"><%=current_user.username%></span>  has logged.</h2>
+  <h2><span class="color"><%=current_user.username%></span> is on the grid.</h2>
+
+<div class="all-container animated fadeIn">
 
   <%@movies.reverse.each do |movie|%>
     <a href="/movies/<%=movie.id%>" class="movie-card" name="<%=movie.title%> (<%=movie.release_date%>)"><img src="<%=movie.poster%>" alt="movie poster"></a>
   <%end%>
 </div>
+
+</section>

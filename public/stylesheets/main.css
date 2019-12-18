@@ -4,6 +4,7 @@
   --menu: #111;
   --text: #eee;
   --background: #000;
+  --hover: rgba(0, 0, 0, .8);
 }
 
 .color {
@@ -121,12 +122,17 @@ button:focus{
 /* Homepage Styles */
 
 .homepage {
-  margin-top: 100px;
-  margin-bottom: 100px;
   display: flex;
+  height: 100vh;
+  overflow: scroll;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.allpage {
+  height: 100%;
+  padding-top: 100px;
 }
 
 .sbutton {
@@ -168,14 +174,14 @@ button:focus{
 }
 
 .all-container {
-  width: 100vw;
+  width: 860px;
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .all-container h2 {
@@ -187,9 +193,13 @@ button:focus{
 
 .all-home {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  top: 100px;
+  margin: 0 auto;
   z-index: 99999;
+  width: 960px;
 }
 
 
@@ -204,35 +214,33 @@ button:focus{
   transform: scale(1.1);
 }
 
-a.movie-card::after{
-  content: attr(name);
-  z-index: 9999;
-  width: 150px;
-  height: 100%;
-  background: rgba(17, 17, 17, .6);
-  border-radius:5px;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.1em;
-  margin-bottom: 0px;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: .5s ease;
-}
-
-a.movie-card:hover::after {
-  opacity: 1;
-}
-
 .movie-card img {
   width: 100%;
   height: 220px;
   border-radius: 5px;
 }
+
+a.movie-card::before{
+  content: attr(name);
+  z-index: 999;
+  width: 150px;
+  height: 220px;
+  background: var(--hover);
+  border-radius:5px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+a.movie-card:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
 
 .review-container {
   width: 882px;
@@ -257,11 +265,13 @@ a.movie-card:hover::after {
   color: var(--text);
   border-radius: 5px;
   white-space:normal;
+  border: 1px solid transparent;
   text-overflow: ellipsis;
 }
 
 .review-card:hover {
   transform: scale(1.05);
+  border: 1px solid var(--accent);
 }
 
 .review-card img {
@@ -307,7 +317,7 @@ a.movie-card:hover::after {
 }
 
 .spage {
-  height: 100vh;
+  height: calc(100vh - 100px);
 }
 
 .sform input,
@@ -329,10 +339,14 @@ a.movie-card:hover::after {
 
 .sresults label img {
   margin-bottom: -7px;
+  border-radius: 5px;
 }
 
 .sresults label {
-  display: block;
+  display: flex;
+  width: 150px;
+  height: 220px;
+  flex-direction: column;
   border: 1px solid transparent;
   border-radius: 5px;
   padding: 3px;
@@ -340,8 +354,44 @@ a.movie-card:hover::after {
   transition: .3s ease;
 }
 
+.sresults label .simage {
+  width: 141px;
+  height: 211px;
+  background: var(--hover);
+  border-radius:5px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  text-align: center;
+  font-size: 1.1em;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.sresults label .no-image {
+  width: 141px;
+  height: 211px;
+  background: var(--menu);
+  border-radius:5px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  text-align: center;
+  font-size: 1.1em;
+  opacity: 1;
+  transition: .5s ease;
+}
+
 .sresults label:hover {
   transform: scale(1.1);
+}
+
+.sresults label:hover span {
+  opacity: 1;
 }
 
 .sresults input[type="radio"]:checked+label {
@@ -406,10 +456,17 @@ a.movie-card:hover::after {
   text-align: right;
 }
 
+.c-content-left a {
+  transition: .3s ease;
+}
+
+.c-content-left a:hover {
+  transform: scale(1.1);
+}
+
 .c-content img {
   align-self: flex-end;
 }
-
 
 .sreview {
   width: 350px;
@@ -445,14 +502,6 @@ a.movie-card:hover::after {
   font-size:1em;
 }
 
-.create-review a {
-  color: var(--text);
-  padding: 10px;
-  background: var(--menu);
-  margin: 9px 0;
-  border-radius: 5px;
-}
-
 .action-buttons {
   display: flex;
   align-items: center;
@@ -480,7 +529,7 @@ button.action-buttons {
 
 .edit-buttons {
   display: flex;
-  margin-top: -5px;
+  margin-top: 4px;
   margin-right: 20px;
   align-items: center;
   justify-content: flex-end;
@@ -489,6 +538,10 @@ button.action-buttons {
 .edit-buttons a {
   padding-top: 8px;
   padding-bottom: 8px;
+  color: var(--text);
+  padding: 10px;
+  background: var(--menu);
+  border-radius: 5px;
 }
 
 .action-buttons a:hover,
@@ -516,7 +569,8 @@ button[type="delete"]:hover {
 }
 .fa-user {
   color: var(--accent);
-  font-size: .8em
+  font-size: .8em;
+  padding-right: 10px;
 }
 
 a.logout:hover {

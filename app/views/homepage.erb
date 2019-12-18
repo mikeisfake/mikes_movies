@@ -1,17 +1,16 @@
-<div class="action-buttons all-home animated fadeIn">
-  <a href="/logout" class="logout"><i class="fas fa-sign-out-alt"></i>  logout.</a>
 
-  <a href="/all">
-    <i class="fas fa-th-large"></i>
-  </a>
-</div>
 
 <section class="homepage animated fadeInDown">
 
+  <div class="action-buttons all-home animated fadeIn">
+    <a href="/all">
+      <i class="fas fa-th-large"></i>
+    </a>
+    <a href="/logout" class="logout"><i class="fas fa-sign-out-alt"></i>  logout.</a>
+  </div>
+
     <h1>
-      <i class="fas fa-user"></i>
-      welcome
-      <%=current_user.username%>.</h1>
+      <i class="fas fa-user"></i><%=@quotes.sample%>.</h1>
     <div class="action-buttons h-page-buttons">
       <div class="sform">
         <form action="/movies/search" method="get">
@@ -35,7 +34,7 @@
       <%end%>
     </div>
 
-    <ul class="review-container animated fadeIn slow delay-1s">
+    <ul class="review-container animated fadeIn delay-1s">
       <h2>random reviews.</h2>
       <%@movies.sample(6).each do |movie|%>
         <a href="/movies/<%=movie.id%>" class="review-card">

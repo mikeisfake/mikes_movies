@@ -2,8 +2,11 @@ require "pry"
 
 class UsersController < ApplicationController
 
+  include Quotable
+
   get '/home' do
     if logged_in?
+      @quotes = quotes
       @movies = current_user.movies
       erb :homepage
     else
@@ -13,6 +16,7 @@ class UsersController < ApplicationController
 
   post '/home' do
     if logged_in?
+      @quotes = quotes 
       @movie = Movie.find_by_id(params[:movie_id])
       @movie.review = params[:review].gsub("\r\n\r", "<br>").gsub("\r\n", "<br>").gsub("\n", "<br>")
       @movie.user_id = session[:user_id]
