@@ -3,7 +3,7 @@
 <section class="homepage animated fadeInDown">
 
   <div class="action-buttons all-home animated fadeIn">
-    <a href="/all">
+    <a href="/movies">
       <i class="fas fa-th-large"></i>
     </a>
     <a href="/logout" class="logout"><i class="fas fa-sign-out-alt"></i>  logout.</a>
@@ -13,7 +13,7 @@
 
     <div class="nav-header">
     <h1>
-      <i class="fas fa-user"></i><%=@quotes.sample%>.</h1>
+      <i class="material-icons user">face</i><%=@quotes.sample%>.</h1>
     <div class="action-buttons h-page-buttons">
       <div class="sform">
         <form action="/movies/search" method="get">
@@ -23,7 +23,9 @@
           </button>
         </form>
         <% if flash.has?(:message) %>
+        <span class="alert animated shake fast">
         <%= flash[:message] %>
+        </span>
         <% end %>
       </div>
     </div>

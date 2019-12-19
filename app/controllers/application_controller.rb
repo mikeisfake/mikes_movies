@@ -12,34 +12,16 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    if logged_in?
+    if session[:user_id]
       redirect '/home'
     else
       erb :index
     end
   end
 
-  get '/signup' do
-    if logged_in?
-      redirect '/home'
-    else
-      erb :signup
-    end
-  end
-
-  post '/signup' do
-    user = User.new(username: params[:username], password: params[:password])
-		if user.save
-      session[:user_id] = user.id
-			redirect '/home'
-		else
-      flash.now[:message] = "i'm sorry dave. i'm afraid i can't do that."
-      erb :signup
-		end
-  end
 
   get '/login' do
-    if logged_in?
+    if session[:user_id]
       redirect '/home'
     else
       erb :login
@@ -70,7 +52,9 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def logged_in?
-      !!session[:user_id]
+      if !session[:user_id]
+        redirect '/'
+      end
     end
 
     def current_user
@@ -78,12 +62,12 @@ class ApplicationController < Sinatra::Base
     end
 
     def owns_movie?
-      current_user.id == @movie.user_id
+      if !current_user.id == @movie.user_id
+        redirect '/'
+      end
     end
 
-    def favorite?
-      !!@movie.favorite
-    end
+
 
   end
 

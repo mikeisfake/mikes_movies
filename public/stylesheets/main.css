@@ -2,8 +2,8 @@
   --accent: #3fa5b0;
   --alert: #d1473d;
   --menu: #111;
-  --text: #e1e1e1;
-  --background: #000;
+  --text: #eee;
+  --background: #050505;
   --hover: rgba(17,17,17, .6);
 }
 
@@ -12,7 +12,10 @@
 }
 
 .alert {
-  color: var(--alert)
+  color: var(--alert);
+  background: var(--menu);
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
 * {
@@ -25,15 +28,20 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   line-height: 1.7;
+  letter-spacing: .5px;
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1.7em;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 h2 {
   font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 h3 {
@@ -67,17 +75,42 @@ button:focus{
 }
 .welcome h1 {
   padding: 10px;
-  margin-left: 15px;
+  padding-left: 0px;
+  margin-left: 5px;
   text-transform: lowercase;
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 10s;
-  transition: 3s ease;
+  animation: typing 2.5s;
+  -webkit-animation: typing 2.5s;
+  transition: .3s ease;
 }
+
+.welcome-title {
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+}
+
+.cursor {
+  font-size: 1.7em;
+}
+
 
 @keyframes typing {
   from {width: 0}
   to {width: 100%}
+}
+
+@keyframes click {
+  0% {transform: scale(1.1)}
+  50% {transform: scale(1)}
+  100% {transform: scale(1.1)}
+}
+
+@keyframes button {
+  0% {transform: scale(1)}
+  50% {transform: scale(.9)}
+  100% {transform: scale(1)}
 }
 
 .welcome ul {
@@ -219,6 +252,11 @@ button:focus{
   transform: scale(1.1);
 }
 
+.movie-card:active {
+  animation: click .4s ease;
+  -webkit-animation: click .4s ease;
+}
+
 .movie-card img {
   width: 100%;
   height: 220px;
@@ -273,7 +311,12 @@ a.movie-card:hover::before {
 }
 
 .review-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+}
+
+.review-card:active {
+  animation: click .4s ease;
+  -webkit-animation: .4s ease;
 }
 
 .review-card img {
@@ -334,6 +377,7 @@ a.movie-card:hover::before {
 .sresults {
   width: 860px;
   margin-top: 20px;
+  padding-bottom: 10px;
 }
 
 .sresults label img {
@@ -393,12 +437,9 @@ a.movie-card:hover::before {
   opacity: 1;
 }
 
-.sresults input[type="radio"]:checked+label {
-  border: 1px solid var(--accent);
-}
-
-.sresults input:hover {
-  background: var(--accent);
+.sresults label:active {
+  animation: click .4s ease;
+  -webkit-animation: .4s ease;
 }
 
 .sresults input[type="radio"] {
@@ -461,6 +502,11 @@ a.movie-card:hover::before {
 
 .c-content-left a:hover {
   transform: scale(1.1);
+}
+
+.c-content-left a:active {
+  animation: click .4s ease;
+  -webkit-animation: click .4s ease;
 }
 
 .c-content img {
@@ -552,6 +598,12 @@ button[type="delete"]:hover {
   background: var(--alert);
 }
 
+.action-buttons a:active,
+button[type="delete"]:active {
+    animation: button .3s ease;
+    -webkit-animation: button .3s ease;
+}
+
 .fa-trash,
 .fa-arrow-right,
 .fa-home,
@@ -566,9 +618,9 @@ button[type="delete"]:hover {
   font-size: 1.2em;
   margin: 0 4px;
 }
-.fa-user {
+.material-icons.user {
   color: var(--accent);
-  font-size: .8em;
+  font-size: 1em;
   padding-right: 10px;
 }
 
