@@ -1,11 +1,11 @@
-module APIable
+# frozen_string_literal: true
 
+module APIable
   def search_api(string)
-    HTTParty.get('http://www.omdbapi.com/?s='+string+'&apikey=2cedcff3&')
+    HTTParty.get('http://www.omdbapi.com/?s=' + string + '&apikey=2cedcff3&')
   end
 
   def return_api(string)
-    HTTParty.get('http://www.omdbapi.com/?i='+string+'&apikey=2cedcff3&').compact
+    HTTParty.get('http://www.omdbapi.com/?i=' + string + '&apikey=2cedcff3&').compact
   end
-
 end

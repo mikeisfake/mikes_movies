@@ -17,20 +17,16 @@
       </button>
     </form>
   </div>
-  <% if flash.has?(:message) %>
-  <span class="alert animated shake fast">
-  <%= flash[:message] %>
-  </span>
-  <%else%>
-  <h2>reviews with <span class="color"><%=@title%></span>.</h2>
+  <% if !flash.has?(:alert) %>
+    <h2>reviews with
+      <span class="color"><%=@title%></span>.</h2>
   <% end %>
 
+  <div class="all-container animated fadeIn">
 
-<div class="all-container animated fadeIn">
-
-<%@movies.each do |movie|%>
-  <a href="/movies/<%=movie.id%>" class="movie-card" name="<%=movie.title%> (<%=movie.release_date%>)"><img src="<%=movie.poster%>" alt="movie poster"></a>
-<%end%>
-</div>
+    <%@movies.each do |movie|%>
+      <a href="/movies/<%=movie.id%>" class="movie-card" name="<%=movie.title%> (<%=movie.release_date%>)"><img src="<%=movie.poster%>" alt="movie poster"></a>
+    <%end%>
+  </div>
 
 </section>

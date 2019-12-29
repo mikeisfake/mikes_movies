@@ -1,50 +1,51 @@
+# frozen_string_literal: true
+
 module Quotable
+  def quotes
+    [
+      "you shouldn't have come back #{current_user.username}",
 
-def quotes
-  [
-    "you shouldn't have come back #{current_user.username}",
+      "here's looking at you #{current_user.username}",
 
-    "here's looking at you #{current_user.username}",
+      "heeere's #{current_user.username}",
 
-    "heeere's #{current_user.username}",
+      "my name is #{current_user.username}. you killed my father, prepare to die",
 
-    "my name is #{current_user.username}. you killed my father, prepare to die",
+      "#{current_user.username} knows kung-fu",
+      
+      "yipee kayaye #{current_user.username}",
 
-    "#{current_user.username} knows kung-fu",
+      "#{current_user.username} don't text",
 
-    "yipee kayaye #{current_user.username}",
+      "#{current_user.username}, i am your father",
 
-    "#{current_user.username} don't text",
+      "#{current_user.username} i have a feeling we're not in kansas anymore",
 
-    "#{current_user.username}, i am your father",
+      "soylent green is #{current_user.username}",
 
-    "#{current_user.username} i have a feeling we're not in kansas anymore",
+      "frankly #{current_user.username}, i don't give a damn",
 
-    "soylent green is #{current_user.username}",
+      "i'll have what #{current_user.username} is having",
 
-    "frankly #{current_user.username}, i don't give a damn",
+      "forget it #{current_user.username} it's chinatown",
 
-    "i'll have what #{current_user.username} is having",
+      "#{current_user.username} can't handle the truth",
 
-    "forget it #{current_user.username} it's chinatown",
+      "this is #{current_user.username} last survivor of the nostromo signing off",
 
-    "#{current_user.username} can't handle the truth",
+      "you know #{current_user.username} i don't know which species is worse",
 
-    "this is #{current_user.username} last survivor of the nostromo signing off",
+      "how can #{current_user.username} not know what it is",
 
-    "you know #{current_user.username} i don't know which species is worse",
+      "we're not computers #{current_user.username}. we're physical",
 
-    "how can #{current_user.username} not know what it is",
+      "#{current_user.username} this is not a shoe",
 
-    "we're not computers #{current_user.username}. we're physical",
+      "#{current_user.username} you suffer from the misplaced optimism of the doomed",
 
-    "#{current_user.username} this is not a shoe",
+      "help me #{current_user.username} you're my only hope",
 
-    "#{current_user.username} you suffer from the misplaced optimism of the doomed",
-
-    "help me #{current_user.username} you're my only hope",
-
-    "i am #{current_user.username} smirking revenge"
-  ]
-end
+      "i am #{current_user.username}'s smirking revenge"
+    ]
+  end
 end

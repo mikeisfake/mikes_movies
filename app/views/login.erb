@@ -6,15 +6,17 @@
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
 
-    <button type="submit"  value="submit">
+    <button type="submit" value="submit">
       <i class="fas fa-arrow-right"></i>
     </button>
   </form>
-  <br>
-  <% if flash.has?(:message) %>
-  <span class="alert animated shake fast">
-  <%= flash[:message] %>
-  </span>
+
+  <% if flash.has?(:alert) %>
+    <a href="/signup">
+      <button>
+      signup?
+    </button>
+    </a>
   <% end %>
 
 </section>

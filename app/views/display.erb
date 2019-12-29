@@ -3,25 +3,35 @@
   <div class="create-review">
 
     <div class="c-content c-content-left animated fadeInDown">
-    <img src="<%=@movie.poster%>" alt="movie poster">
-    <h2><%=@movie.title%> (<%=@movie.release_date%>)</h2>
-    <p>dir. <%=@movie.director%></p><br>
-    <p><%=@movie.summary%></p>
+      <img src="<%=@movie.poster%>" alt="movie poster">
+      <h2><%=@movie.title%>
+        (<%=@movie.release_date%>)</h2>
+      <p>dir.
+        <%=@movie.director%></p><br>
+      <p><%=@movie.summary%></p>
     </div>
 
     <div class="c-content animated fadeInUp">
-      <h2>your review:</h2><br>
-      <div class="review">
-      <%=@movie.review%></div><br>
+      <% if !@movie.review.empty? %>
+        <h2>your review:</h2><br>
+        <div class="review">
+          <%=@movie.review%></div><br>
+      <%end%>
       <div class="action-buttons">
-        <a href="/home"><i class="fas fa-home"></i></a>
+        <a href="/home">
+          <i class="fas fa-home"></i>
+        </a>
         <a href="/movies">
           <i class="fas fa-th-large"></i>
         </a>
-        <a href="/movies/<%=@movie.id%>/edit"><i class="far fa-edit"></i></a>
+        <a href="/movies/<%=@movie.id%>/edit">
+          <i class="far fa-edit"></i>
+        </a>
         <form class="delete-button" method="post" action="/movies/<%= @movie.id %>">
           <input type="hidden" name="_method" value="delete">
-          <button type="delete" value="delete review"><i class="fas fa-trash"></i></button>
+          <button type="delete" value="delete review">
+            <i class="fas fa-trash"></i>
+          </button>
         </form>
       </div>
     </div>

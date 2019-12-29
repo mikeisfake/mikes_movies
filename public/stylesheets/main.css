@@ -1,10 +1,10 @@
 :root {
   --accent: #3fa5b0;
   --alert: #d1473d;
-  --menu: #111;
+  --menu: #201c29;
   --text: #eee;
-  --background: #050505;
-  --hover: rgba(17,17,17, .6);
+  --background: #110f18;
+  --hover: rgba(32,28,41, .6);
 }
 
 .color {
@@ -12,11 +12,23 @@
 }
 
 .alert {
-  color: var(--alert);
-  background: var(--menu);
-  border-radius: 5px;
-  padding: 5px 10px;
+  background: var(--alert);
+  color: var(--text);
+  width: 100vw;
+  display: block;
+  text-align: center;
+  padding: 10px 0;
 }
+
+.success {
+  background: var(--accent);
+  color: var(--text);
+  width: 100vw;
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+}
+
 
 * {
   transition: .3s ease;
@@ -59,13 +71,12 @@ a:visited {
 
 input:focus,
 textarea:focus,
-button:focus{
+button:focus {
   outline: 0px solid transparent;
   box-shadow: 0 0 0 1px var(--accent);
 }
 
 /* Welcome Page Styles */
-
 .welcome {
   display: flex;
   align-items: center;
@@ -73,6 +84,7 @@ button:focus{
   flex-direction: column;
   height: 100vh;
 }
+
 .welcome h1 {
   padding: 10px;
   padding-left: 0px;
@@ -88,29 +100,49 @@ button:focus{
 .welcome-title {
   display: flex;
   align-items: center;
-  justify-content:flex-start;
+  justify-content: flex-start;
 }
 
 .cursor {
   font-size: 1.7em;
 }
 
-
 @keyframes typing {
-  from {width: 0}
-  to {width: 100%}
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%
+  }
 }
 
 @keyframes click {
-  0% {transform: scale(1.1)}
-  50% {transform: scale(1)}
-  100% {transform: scale(1.1)}
+  0% {
+    transform: scale(1.1)
+  }
+
+  50% {
+    transform: scale(1)
+  }
+
+  100% {
+    transform: scale(1.1)
+  }
 }
 
 @keyframes button {
-  0% {transform: scale(1)}
-  50% {transform: scale(.9)}
-  100% {transform: scale(1)}
+  0% {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(.9)
+  }
+
+  100% {
+    transform: scale(1)
+  }
 }
 
 .welcome ul {
@@ -151,8 +183,17 @@ button:focus{
   border: 0px solid transparent;
 }
 
-/* Homepage Styles */
+.signinup button:hover {
+  background: var(--accent);
+  cursor: pointer;
+}
 
+.signinup button:active {
+  animation: click .4s ease;
+  -webkit-animation: click .4s ease;
+}
+
+/* Homepage Styles */
 .homepage {
   display: flex;
   height: 100%;
@@ -189,7 +230,7 @@ button:focus{
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content:flex-start;
   margin-top: 25px;
 }
 
@@ -207,7 +248,6 @@ button:focus{
   background: var(--menu);
   border-radius: 5px;
   margin-top: 10px;
-
 }
 
 .movies-container p a:hover {
@@ -233,16 +273,16 @@ button:focus{
 }
 
 .all-home {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 50px 0;
   width: 860px;
 }
 
-
 .movie-card {
   width: 150px;
+  height: 220px;
   margin: 10px;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -263,13 +303,13 @@ button:focus{
   border-radius: 5px;
 }
 
-a.movie-card::before{
+a.movie-card::before {
   content: attr(name);
   z-index: 999;
   width: 150px;
   height: 220px;
   background: var(--hover);
-  border-radius:5px;
+  border-radius: 5px;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -284,15 +324,14 @@ a.movie-card:hover::before {
   transform: scale(1);
 }
 
-
 .review-container {
-  width: 882px;
+  width: 860px;
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items:center;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .review-container h2 {
@@ -301,17 +340,18 @@ a.movie-card:hover::before {
 }
 
 .review-card {
-  width: 400px;
+  width: 410px;
   height: 150px;
   margin: 9px;
   background: var(--menu);
   color: var(--text);
   border-radius: 5px;
-  white-space:normal;
+  white-space: normal;
 }
 
 .review-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #000;
 }
 
 .review-card:active {
@@ -330,19 +370,19 @@ a.movie-card:hover::before {
   height: 135px;
   padding: 10px;
   padding-bottom: 0px;
-  overflow:hidden;
+  overflow: hidden;
   position: relative;
   border-radius: 0 5px 5px 0;
 }
 
-.review-card span::before{
-    content:'';
-    position: absolute;
-    bottom:0;
-    left: 0;
-    width: 100%;
-    height:150px;
-    background: linear-gradient( transparent, var(--hover), var(--menu));
+.review-card span::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(var(--hover), var(--hover), var(--menu));
 }
 
 .review {
@@ -362,7 +402,7 @@ a.movie-card:hover::before {
 }
 
 .sform input,
-.sform button{
+.sform button {
   color: var(--text);
   padding: 9px;
   margin: 10px 5px;
@@ -381,8 +421,9 @@ a.movie-card:hover::before {
 }
 
 .sresults label img {
-  margin-bottom: -7px;
   border-radius: 5px;
+  width: 150px;
+  height: 220px;
 }
 
 .sresults label {
@@ -390,10 +431,9 @@ a.movie-card:hover::before {
   width: 150px;
   height: 220px;
   flex-direction: column;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   border-radius: 5px;
-  padding: 3px;
-  margin: 3px;
+  margin: 10px;
   transition: .3s ease;
 }
 
@@ -401,7 +441,7 @@ a.movie-card:hover::before {
   width: 141px;
   height: 211px;
   background: var(--hover);
-  border-radius:5px;
+  border-radius: 5px;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -417,7 +457,7 @@ a.movie-card:hover::before {
   width: 141px;
   height: 211px;
   background: var(--menu);
-  border-radius:5px;
+  border-radius: 5px;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -476,7 +516,7 @@ a.movie-card:hover::before {
   align-items: center;
 }
 
-.create-review{
+.create-review {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -523,8 +563,8 @@ a.movie-card:hover::before {
   margin-bottom: 10px;
 }
 
- .create-review textarea,
- .action-buttons textarea {
+.create-review textarea,
+.action-buttons textarea {
   width: 400px;
   height: 275px;
   background-color: var(--menu);
@@ -544,7 +584,7 @@ a.movie-card:hover::before {
   margin: 9px 0;
   border-radius: 5px;
   border: 0px solid transparent;
-  font-size:1em;
+  font-size: 1em;
 }
 
 .action-buttons {
@@ -555,7 +595,7 @@ a.movie-card:hover::before {
 
 .action-buttons a,
 .action-buttons button,
-button.action-buttons{
+button.action-buttons {
   padding: 10px;
   background: var(--menu);
   color: var(--text);
@@ -566,7 +606,7 @@ button.action-buttons{
 }
 
 button.action-buttons {
-  position:absolute;
+  position: absolute;
   left: 380px;
   padding: 5px inherit;
   margin-top: 5px;
@@ -590,7 +630,7 @@ button.action-buttons {
 }
 
 .action-buttons a:hover,
-.create-review button[type="submit"]:hover{
+.create-review button[type="submit"]:hover {
   background: var(--accent);
 }
 
@@ -600,24 +640,24 @@ button[type="delete"]:hover {
 
 .action-buttons a:active,
 button[type="delete"]:active {
-    animation: button .3s ease;
-    -webkit-animation: button .3s ease;
+  animation: button .3s ease;
+  -webkit-animation: button .3s ease;
 }
 
 .fa-trash,
 .fa-arrow-right,
 .fa-home,
-.fa-search
-.fa-sign-out-alt,
-.fa-th-large{
+.fa-search .fa-sign-out-alt,
+.fa-th-large {
   color: var(--text);
   padding: 2px;
 }
 
-.fa-sign-out-alt{
+.fa-sign-out-alt {
   font-size: 1.2em;
   margin: 0 4px;
 }
+
 .material-icons.user {
   color: var(--accent);
   font-size: 1em;
@@ -628,7 +668,7 @@ a.logout:hover {
   background: var(--alert);
 }
 
-.h-page-buttons button{
+.h-page-buttons button {
   margin-left: -5px;
   padding: 8px;
 }

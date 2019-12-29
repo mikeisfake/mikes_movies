@@ -2,25 +2,29 @@
   <div class="create-review">
     <div class="c-content c-content-left animated fadeInDown">
       <img src="<%=@movie.poster%>" alt="movie poster">
-      <h2><%=@movie.title%> (<%=@movie.release_date%>)</h2>
-      <p>dir. <%=@movie.director%></p><br>
+      <h2><%=@movie.title%>
+        (<%=@movie.release_date%>)</h2>
+      <p>dir.
+        <%=@movie.director%></p><br>
       <p><%=@movie.summary%></p>
     </div>
 
-  <div class="action-buttons animated fadeInUp">
-    <div class="c-content">
-      <h2>write a review.</h2><br>
-      <form action="/home" method="post">
-        <input type="hidden" name="movie_id" value="<%=@movie.id%>">
-        <textarea name="review" placeholder="something witty here."></textarea><br>
+    <div class="action-buttons animated fadeInUp">
+      <div class="c-content">
+        <h2>write a review.</h2><br>
+        <form action="/home" method="post">
+          <input type="hidden" name="movie_id" value="<%=@movie.id%>">
+          <textarea name="review" placeholder="something witty here."></textarea><br>
 
-        <div class="action-buttons">
-          <a href="/home"><i class="fas fa-home"></i></a>
-          <button type="submit" value="submit">
-            <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </form>
+          <div class="action-buttons">
+            <a href="/home">
+              <i class="fas fa-home"></i>
+            </a>
+            <button type="submit" value="submit">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 

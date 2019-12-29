@@ -3,7 +3,7 @@
   <div class="create-review">
     <div class="c-content c-content-left animated fadeInDown">
       <a href="/movies/<%=@movie.id%>">
-      <img src="<%=@movie.poster%>" alt="movie poster">
+        <img src="<%=@movie.poster%>" alt="movie poster">
       </a>
     </div>
 
@@ -13,27 +13,27 @@
       <h2><%=@movie.title%>
         (<%=@movie.release_date%>)</h2>
 
-        <form action="/movies/<%=@movie.id%>" method="post">
-          <input type="hidden" name="_method" value="PATCH">
-          <textarea name="review" id="edit"><%=@movie.review%></textarea>
-          <button type="submit" id="edit" value="submit" class="action-buttons">
-            <i class="fas fa-arrow-right"></i>
+      <form action="/movies/<%=@movie.id%>" method="post">
+        <input type="hidden" name="_method" value="PATCH">
+        <textarea name="review" id="edit"><%=@movie.review%></textarea>
+        <button type="submit" id="edit" value="submit" class="action-buttons">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+      <div class="action-buttons edit-buttons">
+        <a href="/home">
+          <i class="fas fa-home"></i>
+        </a>
+        <a href="/movies">
+          <i class="fas fa-th-large"></i>
+        </a>
+        <form class="delete-button" method="post" action="/movies/<%= @movie.id %>">
+          <input type="hidden" name="_method" value="delete">
+          <button type="delete" value="delete review">
+            <i class="fas fa-trash"></i>
           </button>
         </form>
-        <div class="action-buttons edit-buttons">
-            <a href="/home">
-              <i class="fas fa-home"></i>
-            </a>
-            <a href="/movies">
-              <i class="fas fa-th-large"></i>
-            </a>
-            <form class="delete-button" method="post" action="/movies/<%= @movie.id %>">
-              <input type="hidden" name="_method" value="delete">
-              <button type="delete" value="delete review">
-                <i class="fas fa-trash"></i>
-              </button>
-            </form>
-          </div>
+      </div>
     </div>
   </div>
 
